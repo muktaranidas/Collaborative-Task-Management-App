@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  //   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const user = JSON.parse(localStorage.getItem("user"));
   console.log(user);
 
-  const handleLogin = () => {
-    if (user.email) {
-      setIsLoggedIn(true);
-    }
-  };
+  //   const handleLogin = () => {
+  //     if (user.email) {
+  //       setIsLoggedIn(true);
+  //     }
+  //   };
 
   const handleLogout = () => {
     if (user?.email) {
@@ -52,7 +52,7 @@ function Navbar() {
               <li>
                 <Link
                   to="/login"
-                  onClick={handleLogin}
+                  //   onClick={handleLogin}
                   className="text-white hover:text-gray-300"
                 >
                   Login
