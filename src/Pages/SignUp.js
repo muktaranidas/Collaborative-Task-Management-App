@@ -14,11 +14,6 @@ const SignUp = () => {
     profilePicture: null,
   });
 
-  //   const handleInputChange = (e) => {
-  //     const { name, value } = e.target;
-  //     setFormData({ ...formData, [name]: value });
-  //   };
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setFormData({ ...formData, profilePicture: file });

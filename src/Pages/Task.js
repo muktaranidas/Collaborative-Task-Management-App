@@ -7,6 +7,7 @@ function Task({ onAddTask }) {
     description: "",
     dueDate: "",
     priority: "Low",
+    assignee: "",
   });
 
   const handleInputChange = (e) => {
@@ -31,6 +32,7 @@ function Task({ onAddTask }) {
         onSubmit={handleSubmit}
         className="bg-white shadow-md p-4 rounded-md"
       >
+        {/* Title */}
         <div className="mb-4">
           <input
             type="text"
@@ -42,6 +44,8 @@ function Task({ onAddTask }) {
             required
           />
         </div>
+
+        {/* Description */}
         <div className="mb-4">
           <textarea
             name="description"
@@ -52,6 +56,8 @@ function Task({ onAddTask }) {
             required
           />
         </div>
+
+        {/* Due Date */}
         <div className="mb-4">
           <input
             type="date"
@@ -62,6 +68,8 @@ function Task({ onAddTask }) {
             required
           />
         </div>
+
+        {/* Priority */}
         <div className="mb-4">
           <select
             name="priority"
@@ -75,6 +83,19 @@ function Task({ onAddTask }) {
             <option value="High">High</option>
           </select>
         </div>
+
+        <div className="mb-4">
+          <input
+            type="text"
+            name="assignee"
+            placeholder="Assignee"
+            value={task.assignee}
+            onChange={handleInputChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        {/* Submit Button */}
         <div className="text-right">
           <button
             type="submit"
