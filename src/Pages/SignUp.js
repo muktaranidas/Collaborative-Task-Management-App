@@ -4,11 +4,27 @@ import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const [imagePreview, setImagePreview] = useState(null);
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
+    bio: "",
+    profilePicture: null,
   });
+
+  //   const handleInputChange = (e) => {
+  //     const { name, value } = e.target;
+  //     setFormData({ ...formData, [name]: value });
+  //   };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({ ...formData, profilePicture: file });
+    const imageUrl = URL.createObjectURL(file);
+    setImagePreview(imageUrl);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,12 +33,9 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     // Validate form data here (e.g., check for empty fields)
-
     // Store user data in local storage
     localStorage.setItem("user", JSON.stringify(formData));
-
     // Optionally, you can also redirect the user to a login page
     navigate("/login");
   };
@@ -40,6 +53,42 @@ const SignUp = () => {
             id="username"
             name="username"
             value={formData.username}
+            onChange={handleChange}
+            className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="profile" className="block text-gray-600">
+            Profile:
+          </label>
+          <input
+            id="profilePicture"
+            name="profilePicture"
+            type="file"
+            accept=".jpg, .jpeg, .png"
+            className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            onChange={handleFileChange}
+          />
+          {/* Display the selected profile picture in real-time */}
+          {imagePreview && (
+            <div className="mt-4">
+              <img
+                src={imagePreview}
+                alt="Profile Preview"
+                className="w-32 h-32 mx-auto rounded-full"
+              />
+            </div>
+          )}
+        </div>
+        <div className="mb-4">
+          <label htmlFor="bio" className="block text-gray-600">
+            Bio:
+          </label>
+          <textarea
+            type="text"
+            id="bio"
+            name="bio"
+            value={formData.bio}
             onChange={handleChange}
             className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300"
           />
