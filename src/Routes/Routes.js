@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home";
 import SignUp from "../Pages/SignUp";
 import Login from "../Pages/Login";
+import Task from "../Pages/Task";
 
 export const router = createBrowserRouter([
   {
