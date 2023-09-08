@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Task from "./Task";
+import CreateTeam from "../component/CreateTeam";
 
 const Home = () => {
   const [tasks, setTasks] = useState([]);
@@ -17,6 +18,7 @@ const Home = () => {
 
   const addTask = (newTask) => {
     setTasks([...tasks, newTask]);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   };
 
   const toggleTaskStatus = (index) => {
@@ -59,6 +61,7 @@ const Home = () => {
           </li>
         ))}
       </ul>
+      <CreateTeam></CreateTeam>
     </div>
   );
 };
